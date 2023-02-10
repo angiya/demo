@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 
 public class Vehicle {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private String numberPlate;
     private String make;
     private String model;
     private String year;
