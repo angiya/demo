@@ -3,10 +3,12 @@ package com.example.demo.service;
 import com.example.demo.entity.Human;
 import com.example.demo.repository.HumanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class HumanService {
 
     @Autowired
@@ -29,7 +31,10 @@ public class HumanService {
     }
 
 
-    public void killHuman(String name) {
-        repository.deleteById(name);
+    public String killHuman(String name) {
+        Human human =getHumanByName(name);
+        if (human == null) return null;
+        repository.delete(human);
+        return "Target down.";
     }
 }
