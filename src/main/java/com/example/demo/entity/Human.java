@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -15,6 +14,10 @@ public class Human {
     @Id
     private String name;
     private int age;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "doggo name", referencedColumnName = "name")
     private List<Dog> dogs;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "business number", referencedColumnName = "businessRegistrationNumber")
     private Set<Business> businessList;
 }

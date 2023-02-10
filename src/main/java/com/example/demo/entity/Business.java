@@ -12,6 +12,9 @@ public class Business {
     private String businessRegistrationNumber;
     private String name;
 
+    @OneToOne(mappedBy = "human")
+    private Human owner;
+
     @OneToMany(mappedBy = "business")
     private List<Location> locations;
 
