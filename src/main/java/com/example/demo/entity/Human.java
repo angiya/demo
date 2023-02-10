@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -15,5 +16,5 @@ public class Human {
     private String name;
     private int age;
     private List<Dog> dogs;
-    private List<Business> houses;
+    private Set<Business> businessList;
 }
