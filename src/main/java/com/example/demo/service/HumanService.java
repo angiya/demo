@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Dog;
 import com.example.demo.entity.Human;
-import com.example.demo.entity.Location;
 import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
