@@ -37,7 +37,7 @@ public class HumanController {
 
 
     @PostMapping()
-    public ResponseEntity<Human> creatingHuman(Human human) {
+    public ResponseEntity<Human> creatingHuman(@RequestBody Human human) {
         log.info("CREATING A HUMAN");
         Human createdHuman = humanService.createHuman(human);
         if (createdHuman == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);

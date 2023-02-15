@@ -1,26 +1,30 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Business {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
     private String businessRegistrationNumber;
     private String name;
 
-    @OneToOne(mappedBy = "human")
-    private Human owner;
-
-    @OneToMany(mappedBy = "business")
+    @OneToMany
     private List<Location> locations;
 
-    @OneToMany(mappedBy = "business")
+    @OneToMany
     private List<Computer> computers;
 
-    @OneToMany(mappedBy = "business")
+    @OneToMany
     private List<Vehicle> vehicles;
 }

@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Dog;
 import com.example.demo.entity.Human;
-import com.example.demo.repository.HumanRepository;
+import com.example.demo.entity.Location;
+import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,18 @@ public class HumanService {
 
     @Autowired
     HumanRepository repository;
+
+    @Autowired
+    BusinessRepository businessRepository;
+
+    @Autowired
+    ComputerRepository computerRepository;
+
+    @Autowired
+    LocationRepository locationRepository;
+
+    @Autowired
+    VehicleRepository vehicleRepository;
 
 
     public List<Human> getAllHumans() {
@@ -27,6 +41,10 @@ public class HumanService {
 
 
     public Human createHuman(Human human) {
+        locationRepository.saveAll(human.getBusiness().getLocations());
+        vehicleRepository.saveAll(human.getBusiness().getVehicles());
+        computerRepository.saveAll(human.getBusiness().getComputers());
+        businessRepository.save(human.getBusiness());
         return repository.save(human);
     }
 
