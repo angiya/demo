@@ -16,7 +16,7 @@ public class Human {
     @Id
     private String name;
     private int age;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "doggo name", referencedColumnName = "name")
     private List<Dog> dogs;
     @OneToOne

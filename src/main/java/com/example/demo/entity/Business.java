@@ -19,12 +19,12 @@ public class Business {
     private String businessRegistrationNumber;
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Location> locations;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Computer> computers;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Vehicle> vehicles;
 }
