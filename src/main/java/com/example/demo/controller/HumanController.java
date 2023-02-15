@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Dog;
 import com.example.demo.entity.Human;
 import com.example.demo.service.HumanService;
 import lombok.extern.slf4j.Slf4j;
@@ -50,5 +51,14 @@ public class HumanController {
         String response = humanService.killHuman(name);
         if (response == null) return new ResponseEntity<>("Unable to find target", HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/dog/{id}")
+    public ResponseEntity<List<Dog>> getDogsByHuman(@PathVariable(value = "id") String name) {
+        log.info("GETTING ALL DOGS BY SPECIFIED HUMAN");
+        List<Dog> list = humanService.getDogsByHuman(name);
+        if (list == null || list.isEmpty()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }

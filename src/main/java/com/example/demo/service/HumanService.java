@@ -55,4 +55,10 @@ public class HumanService {
         repository.delete(human);
         return "Target down.";
     }
+
+
+    public List<Dog> getDogsByHuman(String id) {
+        Optional<Human> optionalHuman = repository.findById(id);
+        return optionalHuman.map(Human::getDogs).orElse(null);
+    }
 }
