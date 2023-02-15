@@ -2,13 +2,13 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Dog;
 import com.example.demo.entity.Human;
-import com.example.demo.entity.Location;
 import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class HumanService {
@@ -60,5 +60,16 @@ public class HumanService {
     public List<Dog> getDogsByHuman(String id) {
         Optional<Human> optionalHuman = repository.findById(id);
         return optionalHuman.map(Human::getDogs).orElse(null);
+    }
+
+    public List<String> getHumanNames() {
+        List<Human> list = getAllHumans();
+        return list.stream().map(Human::getName).collect(Collectors.toList());
+    }
+
+    public List<List<Dog>> getDogs() {
+        List<Human> humans = getAllHumans();
+        System.out.println("Got humans");
+        return humans.stream().map(Human::getDogs).collect(Collectors.toList());
     }
 }

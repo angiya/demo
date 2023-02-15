@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -19,6 +18,6 @@ public class Human {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "doggo name", referencedColumnName = "name")
     private List<Dog> dogs;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Business business;
 }

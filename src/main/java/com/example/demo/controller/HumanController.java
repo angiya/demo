@@ -61,4 +61,22 @@ public class HumanController {
         if (list == null || list.isEmpty()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
+
+    @GetMapping("/dogs")
+    public ResponseEntity<List<List<Dog>>> getDogs() {
+        log.info("GETTING ALL DOGS BY SPECIFIED HUMAN");
+        List<List<Dog>> list = humanService.getDogs();
+        if (list == null || list.isEmpty()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/names")
+    public ResponseEntity<List<String>> getHumanNames() {
+        log.info("GETTING ALL HUMAN NAMES");
+        List<String> list = humanService.getHumanNames();
+        if (list == null || list.isEmpty()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
 }
